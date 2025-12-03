@@ -78,7 +78,6 @@ const loginUser = async (req, res) => {
 
 const quenMatKhau = async (req, res) => {
     const { email } = req.body;
-    console.log("xxxxxxxxxx",email);
     try {
         const user = await User.findOne({ email });
 

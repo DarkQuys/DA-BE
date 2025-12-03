@@ -1,11 +1,9 @@
 
 const Roadmap = require('../models/Roadmap');
 
-
-
-
 const getRoadmap =  async(req,res)=>{
-    const roadmap = await Roadmap.findOne({ career: req.params.career });
+    console.log("body" , req.body.career)
+    const roadmap = await Roadmap.findOne({ career: req.body.career});
   res.json(roadmap);
 }
 

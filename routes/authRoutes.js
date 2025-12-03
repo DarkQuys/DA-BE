@@ -3,7 +3,7 @@ const { registerUser, loginUser, quenMatKhau, datLaiMatKhau , } = require('../co
 const { getAll } = require('../controllers/questionController');
 const { submit } = require('../controllers/submissionController');
 const { getRoadmap } = require('../controllers/roadmap');
-const { updateProgress, getProgresStudent } = require('../controllers/progress');
+const { updateProgress, getProgresStudent, createProgress } = require('../controllers/progress');
 const router = express.Router();
 
 // Định nghĩa routes
@@ -19,9 +19,10 @@ router.get('/questions', getAll);
 router.post('/submissions/submit', submit);
 
 // /roadmap
-router.get('/roadmap/:career', getRoadmap);
+router.post('/roadmap', getRoadmap);
 
 // progress
+router.post('/progress/create', createProgress);
 router.put('/progress/update', updateProgress);
 router.get('/progress/:studentId/:career',getProgresStudent );
 

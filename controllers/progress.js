@@ -2,6 +2,32 @@
 const Progress = require('../models/Progress');
 const Roadmap = require('../models/Roadmap');
 
+const createProgress = async (req, res) => {
+  try {
+    const { studentId, career, completedItems } = req.body;
+
+    // Validate cơ bản
+    if (!studentId || !career) {
+      return res.status(400).json({ message: "studentId và career là bắt buộc" });
+    }
+
+    const newProgress = await Progress.create({
+      studentId,
+      career,
+      completedItems: completedItems || []
+    });
+
+    res.status(201).json({
+      message: "Tạo progress thành công",
+      data: newProgress
+    });
+  } catch (err) {
+    console.error("Error creating progress:", err);
+    res.status(500).json({ message: "Lỗi server", error: err.message });
+  }
+};
+
+
 const updateProgress = async (req, res) => {
     const { studentId, career, itemIndex } = req.body;
 
@@ -49,4 +75,4 @@ const getProgresStudent = async (req, res) => {
         completedItems: progress.completedItems
     });
 }
-module.exports = { updateProgress, getProgresStudent };
+module.exports = { updateProgress, getProgresStudent ,createProgress};
