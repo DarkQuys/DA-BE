@@ -146,3 +146,32 @@ Dễ dàng mở rộng thêm ngành (Pentest, DFIR, Malware…)
 👨‍💻 8. Người phát triển
 
 Phùng Đắc Quý
+
+
+
+
+
+// Định nghĩa routes
+router.post('/register', registerUser); const { hoTen, email, matKhau, nhapLaiMatKhau } = req.body;
+
+router.post('/login', loginUser);  const { email, matKhau } = req.body;
+
+router.post('/quen-mat-khau', quenMatKhau); const { email } = req.body;
+
+router.post('/dat-lai-mat-khau/:resetToken', datLaiMatKhau);  const { matKhauMoi } = req.body;
+                                                              const { resetToken } = req.params;
+
+
+//questions
+router.get('/questions', getAll);
+
+//submissions
+router.post('/submissions/submit', submit); const { studentId, studentName, answers } = req.body;
+
+// /roadmap
+router.post('/roadmap', getRoadmap);  const {career} = req.body;
+
+// progress
+router.post('/progress/create', createProgress); const { studentId, career, completedItems } = req.body;
+router.put('/progress/update', updateProgress); const { studentId, career, itemIndex } = req.body;
+router.get('/progress/:studentId/:career',getProgresStudent ); const { studentId, career } = req.params;
