@@ -168,8 +168,15 @@ router.get('/questions', getAll);
 //submissions
 router.post('/submissions/submit', submit); const { studentId, studentName, answers } = req.body;
 
-// /roadmap
-router.post('/roadmap', getRoadmap);  const {career} = req.body;
+// roadmap
+router.get('/all-roadmap', getAllRoadmap);  
+router.get('/roadmap/:career', getRoadmap);
+
+//labs
+router.get('/get-labs', getAllLabs);  
+
+//resource
+router.get('/get-resorce', getAllResources);  
 
 // progress
 router.post('/progress/create', createProgress); const { studentId, career, completedItems } = req.body;
