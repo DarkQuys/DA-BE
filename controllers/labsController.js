@@ -84,4 +84,59 @@ const getLabById = async (req, res) => {
     }
 };
 
-module.exports = { getAllLabs, getLabById };
+/**
+ * API 3: POST tạo một Lab mới
+ * Route: POST /api/labs
+ */
+const createLab = async (req, res) => {
+    try {
+        const labData = req.body;
+        
+        // --- Bổ sung Logic kiểm tra ID ---
+        // Do bạn dùng trường 'id' tự định nghĩa (unique), ta cần tìm max ID hiện tại 
+        // và gán ID mới để tránh lỗi trùng lặp khi người dùng không gửi 'id'
+        
+        if (!labData.id) {
+            // Tìm Max ID hiện tại
+            const latestLab = await Lab.findOne().sort({ id: -1 }).select('id');
+            const newId = latestLab ? latestLab.id + 1 : 1;
+            labData.id = newId;
+        }
+        
+        // Tạo document mới từ Model và dữ liệu gửi lên
+        const newLab = new Lab(labData);
+
+        // Lưu vào cơ sở dữ liệu. Mongoose sẽ tự động validate (ví dụ: required, unique)
+        await newLab.save();
+
+        // Trả về document đã tạo thành công
+        res.status(201).json({
+            message: 'Tạo Lab mới thành công.',
+            data: newLab
+        });
+
+    } catch (error) {
+        // Xử lý lỗi validation (ví dụ: thiếu required fields) hoặc lỗi trùng unique
+        if (error.name === 'ValidationError') {
+            return res.status(400).json({ 
+                message: 'Dữ liệu Lab không hợp lệ hoặc thiếu trường bắt buộc.',
+                details: error.message
+            });
+        }
+        if (error.code === 11000) {
+            // Lỗi trùng unique key (id hoặc url)
+            const field = Object.keys(error.keyValue)[0];
+            return res.status(409).json({ 
+                message: `Lỗi trùng lặp: Trường '${field}' đã tồn tại.`,
+            });
+        }
+
+        console.error("Lỗi khi tạo Lab:", error);
+        res.status(500).json({ 
+            message: 'Lỗi máy chủ nội bộ khi tạo Lab.',
+            error: error.message 
+        });
+    }
+};
+
+module.exports = { getAllLabs, getLabById ,createLab};

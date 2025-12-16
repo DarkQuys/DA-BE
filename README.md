@@ -170,15 +170,64 @@ router.post('/submissions/submit', submit); const { studentId, studentName, answ
 
 // roadmap
 router.get('/all-roadmap', getAllRoadmap);  
-router.get('/roadmap/:career', getRoadmap);
+router.get('/roadmap/:career', getRoadmap); truyền qua params trường "career"
+router.get('/roadmap2/:career', getRoadmapByLevel);  ví dụ api/auth/roadmap2/soc_analyst?level=2
 
 //labs
-router.get('/get-labs', getAllLabs);  
+router.get('/get-labs', getAllLabs);  const { category, difficulty, search } = req.query;  có thể lọc bằng cách truyền qua query parmas. không truyền gì sẽ lấy tất cả dữ liệu
+router.post('/post-lab', createLab);
+ví dụ : {
+    "title": "New Buffer Overflow Lab Practice",
+    "platform": "Custom Lab",
+    "category": "System Security",
+    "skill_tags": [
+        "Buffer Overflow",
+        "Stack",
+        "RCE"
+    ],
+    "difficulty": 4,
+    "subject": "System exploitation",
+    "url": "https://yourlabdomain.com/new-overflow-practice",
+    "description": "Lab thực hành tấn công Buffer Overflow cơ bản trên stack.",
+    "description_detail": "Lab giúp hiểu cách ghi đè lên EIP để chuyển hướng thực thi lệnh."
+}
 
 //resource
-router.get('/get-resorce', getAllResources);  
+router.get('/get-resorce', getAllResources);    const { category, language, level, search } = req.query;  api này cũng vậy 
+router.post('/post-resorce', createResource);  
+ví dụ :{
+    "category": "article",
+    "title": "Hướng dẫn cấu hình bảo mật cơ bản cho Linux Server",
+    "language": "vi",
+    "level": "intermediate",
+    "url": "https://anexamplearticle.com/security-config-linux",
+    "notes": "Bài viết chi tiết về hardening và firewall cơ bản cho Ubuntu."
+}
 
 // progress
 router.post('/progress/create', createProgress); const { studentId, career, completedItems } = req.body;
 router.put('/progress/update', updateProgress); const { studentId, career, itemIndex } = req.body;
 router.get('/progress/:studentId/:career',getProgresStudent ); const { studentId, career } = req.params;
+
+// quiz question
+router.get('/get-quiz', getRandomQuestions);  truyền qua query nhưng trường này (k truyền vài trường cũng không sao)  const { count, domain, skill, difficulty } = req.query; 
+router.post('/submit-quiz', submitQuiz);  
+ví dụ body : [
+    {
+        "id": 1,
+        "user_answer": 0
+    },
+    {
+        "id": 2,
+        "user_answer": 0
+    },
+    {
+        "id": 3,
+        "user_answer": 1 
+    },
+    {
+        "id": 4,
+        "user_answer": 0 
+    }
+    // ... Thêm các câu trả lời khác
+]
