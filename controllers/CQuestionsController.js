@@ -1,6 +1,6 @@
 // controllers/quizController.js
 const QuizQuestion = require('../models/CQuestion');
-
+const QuizHistory = require('../models/QuizHistory');
 /**
  * API 1: Lấy ngẫu nhiên số câu hỏi tùy chỉnh (Có thể lọc)
  * Route: GET /api/quiz/generate?count=10&domain=Web%20Pentester&difficulty=medium
@@ -58,63 +58,159 @@ const getRandomQuestions = async (req, res) => {
  * Route: POST /api/quiz/submit
  * Body: [{ id: 1, user_answer: 0 }, { id: 2, user_answer: 1 }, ...]
  */
+// const submitQuiz = async (req, res) => {
+//     try {
+//         const submissions = req.body; // Mảng các câu trả lời: [{ id: question_id, user_answer: index }]
+
+//         if (!Array.isArray(submissions) || submissions.length === 0) {
+//             return res.status(400).json({ message: 'Dữ liệu làm bài không hợp lệ hoặc trống.' });
+//         }
+
+//         // Lấy danh sách ID câu hỏi từ submissions
+//         const questionIds = submissions.map(s => s.id).filter(id => id !== undefined);
+
+//         // 1. Truy vấn tất cả đáp án đúng từ DB
+//         const correctAnswers = await QuizQuestion.find({ id: { $in: questionIds } })
+//             .select('id answer');
+
+//         // Chuyển kết quả DB thành Map để truy vấn nhanh hơn: { questionId: correctAnswerIndex }
+//         const answerMap = correctAnswers.reduce((map, q) => {
+//             map[q.id] = q.answer;
+//             return map;
+//         }, {});
+
+//         let correctCount = 0;
+//         const resultDetails = [];
+//         const totalQuestions = submissions.length;
+
+//         // 2. Chấm điểm
+//         submissions.forEach(submission => {
+//             const correctAnswer = answerMap[submission.id];
+//             const isCorrect = correctAnswer !== undefined && correctAnswer === submission.user_answer;
+
+//             if (isCorrect) {
+//                 correctCount++;
+//             }
+
+//             // Ghi lại chi tiết kết quả (tùy chọn)
+//             resultDetails.push({
+//                 id: submission.id,
+//                 is_correct: isCorrect,
+//                 correct_answer_index: correctAnswer,
+//                 user_answer_index: submission.user_answer
+//             });
+//         });
+
+//         // 3. Trả về điểm số
+//         res.status(200).json({
+//             total_questions: totalQuestions,
+//             correct_count: correctCount,
+//             score_percentage: (correctCount / totalQuestions) * 100,
+//             details: resultDetails // Chi tiết từng câu (tùy chọn)
+//         });
+
+//     } catch (error) {
+//         console.error("Lỗi khi chấm điểm trắc nghiệm:", error);
+//         res.status(500).json({
+//             message: 'Lỗi máy chủ nội bộ trong quá trình chấm điểm.',
+//             error: error.message
+//         });
+//     }
+// };
+
 const submitQuiz = async (req, res) => {
     try {
-        const submissions = req.body; // Mảng các câu trả lời: [{ id: question_id, user_answer: index }]
+        const { userId, domain, submissions } = req.body;
 
         if (!Array.isArray(submissions) || submissions.length === 0) {
-            return res.status(400).json({ message: 'Dữ liệu làm bài không hợp lệ hoặc trống.' });
+            return res.status(400).json({ message: 'Dữ liệu nộp bài không hợp lệ.' });
         }
 
-        // Lấy danh sách ID câu hỏi từ submissions
-        const questionIds = submissions.map(s => s.id).filter(id => id !== undefined);
+        // 1. Lấy danh sách ID câu hỏi từ dữ liệu nộp lên
+        const questionIds = submissions.map(s => s.id);
 
-        // 1. Truy vấn tất cả đáp án đúng từ DB
-        const correctAnswers = await QuizQuestion.find({ id: { $in: questionIds } })
-            .select('id answer');
+        // 2. Truy vấn DB để lấy đáp án đúng
+        const questionsFromDb = await QuizQuestion.find({ id: { $in: questionIds } });
 
-        // Chuyển kết quả DB thành Map để truy vấn nhanh hơn: { questionId: correctAnswerIndex }
-        const answerMap = correctAnswers.reduce((map, q) => {
+        // Tạo map để tra cứu nhanh đáp án đúng theo ID
+        const answerMap = questionsFromDb.reduce((map, q) => {
             map[q.id] = q.answer;
             return map;
         }, {});
 
+        // 3. Tính toán kết quả
         let correctCount = 0;
-        const resultDetails = [];
-        const totalQuestions = submissions.length;
+        const details = [];
 
-        // 2. Chấm điểm
-        submissions.forEach(submission => {
-            const correctAnswer = answerMap[submission.id];
-            const isCorrect = correctAnswer !== undefined && correctAnswer === submission.user_answer;
+        submissions.forEach(sub => {
+            const correctAnswerIndex = answerMap[sub.id];
+            const isCorrect = correctAnswerIndex !== undefined && correctAnswerIndex === sub.user_answer;
 
-            if (isCorrect) {
-                correctCount++;
-            }
+            if (isCorrect) correctCount++;
 
-            // Ghi lại chi tiết kết quả (tùy chọn)
-            resultDetails.push({
-                id: submission.id,
+            details.push({
+                questionId: sub.id,
                 is_correct: isCorrect,
-                correct_answer_index: correctAnswer,
-                user_answer_index: submission.user_answer
+                user_answer_index: sub.user_answer,
+                correct_answer_index: correctAnswerIndex
             });
         });
 
-        // 3. Trả về điểm số
-        res.status(200).json({
+        // --- PHẦN TÍNH ĐIỂM ---
+        const totalQuestions = submissions.length;
+        const wrongCount = totalQuestions - correctCount;
+        const scorePercentage = (correctCount / totalQuestions) * 100;
+
+        // Tính điểm hệ số 10 (làm tròn 1 chữ số thập phân)
+        const finalScore = parseFloat(((correctCount / totalQuestions) * 10).toFixed(1));
+
+        // 4. Lưu vào lịch sử (Nếu bạn đã làm bước lưu lịch sử ở câu trước)
+        const historyEntry = new QuizHistory({
+            userId: userId || "anonymous",
             total_questions: totalQuestions,
             correct_count: correctCount,
-            score_percentage: (correctCount / totalQuestions) * 100,
-            details: resultDetails // Chi tiết từng câu (tùy chọn)
+            score_percentage: scorePercentage,
+            domain: domain || "General",
+            details: details
+        });
+        await historyEntry.save();
+
+        // 5. Trả về kết quả cho Client bao gồm ĐIỂM
+        res.status(200).json({
+            message: "Chấm điểm hoàn tất",
+            summary: {
+                total: totalQuestions,
+                correct: correctCount,
+                wrong: wrongCount,
+                percentage: `${scorePercentage}%`,
+                points: finalScore // <--- Điểm số trả về ở đây (ví dụ: 8.5)
+            },
+            details: details
         });
 
     } catch (error) {
-        console.error("Lỗi khi chấm điểm trắc nghiệm:", error);
-        res.status(500).json({
-            message: 'Lỗi máy chủ nội bộ trong quá trình chấm điểm.',
-            error: error.message
-        });
+        console.error("Lỗi submit:", error);
+        res.status(500).json({ message: 'Lỗi khi xử lý nộp bài.', error: error.message });
     }
 };
-module.exports = { getRandomQuestions, submitQuiz };
+/**
+ * API MỚI: Lấy lịch sử làm bài của một User
+ * Route: GET /api/quiz/history/:userId
+ */
+const getUserQuizHistory = async (req, res) => {
+    try {
+        const userId = req.params.userId;
+
+        // Tìm tất cả lịch sử của User, sắp xếp cái mới nhất lên đầu
+        const history = await QuizHistory.find({ userId: userId })
+            .sort({ createdAt: -1 });
+
+        res.status(200).json({
+            count: history.length,
+            data: history
+        });
+    } catch (error) {
+        res.status(500).json({ message: 'Lỗi khi lấy lịch sử.', error: error.message });
+    }
+};
+module.exports = { getRandomQuestions, submitQuiz, getUserQuizHistory };

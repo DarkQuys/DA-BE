@@ -7,7 +7,7 @@ const { updateProgress, getProgresStudent, createProgress } = require('../contro
 const { getAllLabs, createLab } = require('../controllers/labsController');
 const { getAllResources, createResource } = require('../controllers/resorcesController');
 const { getTestMessageUrl } = require('nodemailer');
-const { getRandomQuestions, submitQuiz } = require('../controllers/CQuestionsController');
+const { getRandomQuestions, submitQuiz, getUserQuizHistory } = require('../controllers/CQuestionsController');
 const router = express.Router();
 
 // Định nghĩa routes
@@ -43,6 +43,9 @@ router.post('/post-resorce', createResource);
 //quiz
 router.get('/get-quiz', getRandomQuestions);  
 router.post('/submit-quiz', submitQuiz);  
+router.get('/quiz/history/:userId', getUserQuizHistory);  
+
+
 
 
 
