@@ -211,23 +211,15 @@ router.get('/progress/:studentId/:career',getProgresStudent ); const { studentId
 
 // quiz question
 router.get('/get-quiz', getRandomQuestions);  truyền qua query nhưng trường này (k truyền vài trường cũng không sao)  const { count, domain, skill, difficulty } = req.query; 
-router.post('/submit-quiz', submitQuiz);  
-ví dụ body : [
-    {
-        "id": 1,
-        "user_answer": 0
-    },
-    {
-        "id": 2,
-        "user_answer": 0
-    },
-    {
-        "id": 3,
-        "user_answer": 1 
-    },
-    {
-        "id": 4,
-        "user_answer": 0 
-    }
-    // ... Thêm các câu trả lời khác
-]
+router.post('/submit-quiz', submitQuiz);   const { userId, domain, submissions } = req.body;
+ví dụ body : {
+    "userId": "692335f771ac631e99c4ba92",
+    "domain": "Web Pentester",
+    "submissions": [
+        { "id": 1, "user_answer": 0 },
+        { "id": 2, "user_answer": 1 },
+        { "id": 4, "user_answer": 1 },
+        { "id": 6, "user_answer": 1 }
+    ]
+}
+router.get('/quiz/history/:userId', getUserQuizHistory);  truyền id qua url param kia nha

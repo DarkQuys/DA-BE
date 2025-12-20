@@ -2,17 +2,17 @@
 const Lab = require('../models/Labs'); // Thay đổi đường dẫn nếu cần
 
 /**
- * API 1: GET tất cả các Labs (với tùy chọn lọc theo Category và Difficulty)
- * Route: GET /api/labs?category=Web%20Security&difficulty=2
+ * API 1: GET tất cả các Labs (với tùy chọn lọc theo platform và Difficulty)
+ * Route: GET /api/labs?platform=Web%20Security&difficulty=2
  */
 const getAllLabs = async (req, res) => {
     try {
-        const { category, difficulty, search } = req.query;
+        const { platform, difficulty, search } = req.query;
         const filter = {};
 
-        // Lọc theo Category
-        if (category) {
-            filter.category = category;
+        // Lọc theo platform
+        if (platform) {
+            filter.platform = platform;
         }
 
         // Lọc theo Difficulty
