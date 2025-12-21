@@ -3,7 +3,7 @@ const { registerUser, loginUser, quenMatKhau, datLaiMatKhau, } = require('../con
 const { getAll } = require('../controllers/questionController');
 const { submit } = require('../controllers/submissionController');
 const { getRoadmap, getAllRoadmap, getRoadmapByLevel } = require('../controllers/roadmap');
-const { updateProgress, getProgresStudent, createProgress, getProgressStudent } = require('../controllers/progress');
+const { updateProgress, getProgresStudent, createProgress, getProgressStudent, getProgressStudent2 } = require('../controllers/progress');
 const { getAllLabs, createLab } = require('../controllers/labsController');
 const { getAllResources, createResource } = require('../controllers/resorcesController');
 const { getTestMessageUrl } = require('nodemailer');
@@ -31,6 +31,7 @@ router.get('/roadmap2/:career', getRoadmapByLevel);
 router.post('/progress/create', createProgress);
 router.put('/progress/update', updateProgress);
 router.get('/progress/:studentId/:career', getProgressStudent);
+router.get('/progress/:studentId', getProgressStudent2);
 
 //labs
 router.get('/get-labs', getAllLabs);

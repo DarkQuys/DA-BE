@@ -123,5 +123,52 @@ const getProgressStudent = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
+const getProgressStudent2 = async (req, res) => {
+  try {
+    const { studentId } = req.params;
 
-module.exports = { updateProgress, getProgressStudent, createProgress };
+    // decode career (phòng khi có %20)
+    //const decodedCareer = decodeURIComponent(career);
+
+    // tìm roadmap trước
+    // const roadmap = await Roadmap.findOne({ career: career });
+
+    // if (!roadmap) {
+    //   return res.status(404).json({
+    //     message: "Roadmap not found for this career"
+    //   });
+    // }
+
+    // tìm progress
+    const progress = await Progress.findOne({
+      studentId
+    });
+
+    // nếu chưa có progress
+    if (!progress) {
+      return res.json({
+        // completed: 0,
+        // //total: roadmap.items.length,
+        // percentage: 0,
+        // completedItems: []
+        progress: null
+      });
+    }
+
+    //const completed = progress.completedItems.length;
+    //const total = roadmap.items.length;
+
+    res.json({
+      //completed,
+      //total,
+      //percentage: total === 0 ? 0 : Math.round((completed / total) * 100),
+      //roadmap: roadmap,
+      //completedItems: progress.completedItems
+      progress: progress
+    });
+  } catch (err) {
+    console.error("getProgresStudent error:", err);
+    res.status(500).json({ error: err.message });
+  }
+};
+module.exports = { updateProgress, getProgressStudent, createProgress ,getProgressStudent2 };
