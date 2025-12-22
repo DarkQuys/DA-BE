@@ -4,751 +4,751 @@ const connectDB = require('./config/db');
 const Web_pentest = [
   {
     "id": 1,
-    "domain": "DFIR Analyst (Digital Forensics)",
-    "skill": "DFIR Basics",
+    "domain": "Malware Analyst",
+    "skill": "Malware Basics",
     "difficulty": "easy",
     "type": "knowledge",
-    "question": "DFIR (Digital Forensics & Incident Response) tập trung chủ yếu vào mục tiêu nào?",
+    "question": "Mục tiêu chính của một malware analyst là gì?",
     "options": [
-      "A. Thu thập, phân tích chứng cứ số và xử lý sự cố bảo mật",
-      "B. Thiết kế giao diện người dùng cho ứng dụng web",
-      "C. Tối ưu hiệu năng cơ sở dữ liệu",
-      "D. Cấu hình mạng LAN cho công ty"
+      "A. Phân tích mã độc để hiểu hành vi, mục tiêu và cách phòng thủ",
+      "B. Viết thêm nhiều loại malware mới",
+      "C. Thiết kế giao diện người dùng cho ứng dụng",
+      "D. Quản lý cơ sở dữ liệu doanh nghiệp"
     ],
     "answer": 0
   },
   {
     "id": 2,
-    "domain": "DFIR Analyst (Digital Forensics)",
-    "skill": "Order of Volatility",
+    "domain": "Malware Analyst",
+    "skill": "Static vs Dynamic",
     "difficulty": "easy",
     "type": "knowledge",
-    "question": "Trong DFIR, \"order of volatility\" dùng để chỉ điều gì?",
+    "question": "Khác biệt chính giữa phân tích tĩnh (static) và phân tích động (dynamic) là gì?",
     "options": [
-      "A. Thứ tự ưu tiên thu thập dữ liệu theo mức độ dễ mất đi",
-      "B. Thứ tự các bước cài đặt hệ điều hành",
-      "C. Thứ tự backup dữ liệu trong tuần",
-      "D. Thứ tự vá lỗi phần mềm"
+      "A. Static không chạy mã, chỉ xem cấu trúc/binary; dynamic cho chạy mã trong môi trường kiểm soát",
+      "B. Static luôn an toàn tuyệt đối, dynamic luôn làm hỏng máy",
+      "C. Static chỉ dùng cho script, dynamic chỉ dùng cho file PE",
+      "D. Static chỉ xem log, dynamic chỉ xem network"
     ],
     "answer": 0
   },
   {
     "id": 3,
-    "domain": "DFIR Analyst (Digital Forensics)",
-    "skill": "Order of Volatility",
-    "difficulty": "medium",
+    "domain": "Malware Analyst",
+    "skill": "Basic Static",
+    "difficulty": "easy",
     "type": "knowledge",
-    "question": "Dữ liệu nào thường được xem là biến động (volatile) nhất và nên thu thập sớm nhất?",
+    "question": "Công cụ nào sau đây thường dùng cho phân tích tĩnh file PE trên Windows?",
     "options": [
-      "A. Nội dung RAM và bảng kết nối mạng đang hoạt động",
-      "B. Ổ cứng hệ thống đã tắt nguồn",
-      "C. Bản sao lưu tuần trước trên tape",
-      "D. Tài liệu in giấy trong văn phòng"
+      "A. PEiD, PE-bear, IDA, Ghidra",
+      "B. Wireshark, Zeek",
+      "C. Burp Suite",
+      "D. Sqlmap"
     ],
     "answer": 0
   },
   {
     "id": 4,
-    "domain": "DFIR Analyst (Digital Forensics)",
-    "skill": "Chain of Custody",
+    "domain": "Malware Analyst",
+    "skill": "Hashing",
     "difficulty": "easy",
     "type": "knowledge",
-    "question": "Mục đích chính của 'chain of custody' trong điều tra số là gì?",
+    "question": "Tại sao cần tính hash (MD5/SHA-256) của mẫu mã độc?",
     "options": [
-      "A. Ghi lại quá trình ai đã tiếp xúc với chứng cứ, khi nào và vì lý do gì",
-      "B. Mã hóa toàn bộ ổ đĩa",
-      "C. Xóa dấu vết tạm thời khỏi hệ thống",
-      "D. Thay đổi quyền sở hữu file"
+      "A. Để định danh mẫu, chia sẻ IOC và đảm bảo tính toàn vẹn file",
+      "B. Để nén file cho nhẹ",
+      "C. Để mã hóa file",
+      "D. Để tăng tốc độ phân tích"
     ],
     "answer": 0
   },
   {
     "id": 5,
-    "domain": "DFIR Analyst (Digital Forensics)",
-    "skill": "Imaging",
-    "difficulty": "medium",
+    "domain": "Malware Analyst",
+    "skill": "File Types",
+    "difficulty": "easy",
     "type": "knowledge",
-    "question": "Khi tạo image forensics của ổ đĩa, thao tác nào sau đây là đúng chuẩn hơn?",
+    "question": "Trên Windows, mã độc dạng thực thi native thường có định dạng gì?",
     "options": [
-      "A. Tạo bản sao bit-by-bit và tính hash trước/sau để đảm bảo tính toàn vẹn",
-      "B. Sao chép các file quan trọng bằng Windows Explorer",
-      "C. Nén ổ đĩa thành file ZIP",
-      "D. Chỉ chụp ảnh màn hình các thư mục chính"
+      "A. PE (Portable Executable), ví dụ .exe, .dll",
+      "B. ELF",
+      "C. Mach-O",
+      "D. Script .sh"
     ],
     "answer": 0
   },
   {
     "id": 6,
-    "domain": "DFIR Analyst (Digital Forensics)",
-    "skill": "Hashing",
-    "difficulty": "easy",
+    "domain": "Malware Analyst",
+    "skill": "PE Structure",
+    "difficulty": "medium",
     "type": "knowledge",
-    "question": "Giá trị hash (MD5/SHA-1/SHA-256…) thường dùng để làm gì trong điều tra số?",
+    "question": "Trong file PE, bảng import (Import Table) giúp analyst biết điều gì?",
     "options": [
-      "A. Xác minh tính toàn vẹn của file hoặc image",
-      "B. Nén dữ liệu để tiết kiệm dung lượng",
-      "C. Mã hóa dữ liệu trên đĩa",
-      "D. Tăng tốc truy cập file"
+      "A. Các API và thư viện mà chương trình gọi tới",
+      "B. Danh sách user trên hệ thống",
+      "C. Danh sách địa chỉ IP liên hệ",
+      "D. Các tiến trình đang chạy"
     ],
     "answer": 0
   },
   {
     "id": 7,
-    "domain": "DFIR Analyst (Digital Forensics)",
-    "skill": "Windows Artifacts",
+    "domain": "Malware Analyst",
+    "skill": "Packing",
     "difficulty": "medium",
     "type": "knowledge",
-    "question": "Trong Windows, MFT (Master File Table) thuộc về thành phần nào?",
+    "question": "Dấu hiệu thường gặp cho thấy một file PE có thể đã bị pack/obfuscate là gì?",
     "options": [
-      "A. Hệ thống file NTFS",
-      "B. Registry SYSTEM hive",
-      "C. Bộ nhớ ảo (pagefile)",
-      "D. Event Log Security"
+      "A. Số lượng section ít, tên section lạ, entropy cao, import table rất nhỏ",
+      "B. Nhiều comment tiếng Anh trong code",
+      "C. Dung lượng file rất lớn nhưng không có code",
+      "D. File không có phần header"
     ],
     "answer": 0
   },
   {
     "id": 8,
-    "domain": "DFIR Analyst (Digital Forensics)",
-    "skill": "Windows Artifacts",
-    "difficulty": "medium",
-    "type": "knowledge",
-    "question": "File prefetch (.pf) trong Windows giúp DFIR analyst làm gì?",
+    "domain": "Malware Analyst",
+    "skill": "Unpacking",
+    "difficulty": "hard",
+    "type": "scenario",
+    "question": "Khi chạy mã độc pack trong debugger, bạn muốn lấy được payload đã giải nén. Bước nào sau đây là hợp lý?",
     "options": [
-      "A. Xác định chương trình nào đã được thực thi và thời điểm gần đây",
-      "B. Xem nội dung email đã gửi",
-      "C. Lưu cấu hình tường lửa",
-      "D. Lưu danh sách user trong domain"
+      "A. Đặt breakpoint sau API VirtualAlloc/WriteProcessMemory và dump vùng nhớ chứa code đã unpack",
+      "B. Chỉ đổi tên file .exe",
+      "C. Nén lại file bằng ZIP",
+      "D. Đổi quyền file thành read-only"
     ],
     "answer": 0
   },
   {
     "id": 9,
-    "domain": "DFIR Analyst (Digital Forensics)",
-    "skill": "Registry",
-    "difficulty": "medium",
+    "domain": "Malware Analyst",
+    "skill": "Sandbox",
+    "difficulty": "easy",
     "type": "knowledge",
-    "question": "Hive registry nào chứa thông tin tài khoản local (SAM database) trên Windows?",
+    "question": "Mục đích chính của sandbox khi phân tích mã độc là gì?",
     "options": [
-      "A. SAM",
-      "B. SYSTEM",
-      "C. SOFTWARE",
-      "D. SECURITY"
+      "A. Cho phép chạy mã độc an toàn, ghi lại hành vi mà không ảnh hưởng môi trường thật",
+      "B. Tăng tốc chạy phần mềm hợp lệ",
+      "C. Thay thế hoàn toàn antivirus",
+      "D. Lưu trữ log hệ thống"
     ],
     "answer": 0
   },
   {
     "id": 10,
-    "domain": "DFIR Analyst (Digital Forensics)",
-    "skill": "Timestamps",
+    "domain": "Malware Analyst",
+    "skill": "Network Behavior",
     "difficulty": "medium",
-    "type": "knowledge",
-    "question": "Trong phân tích NTFS, \"MACB\" thường dùng để chỉ gì?",
+    "type": "scenario",
+    "question": "Khi chạy mã độc trong sandbox, bạn thấy nó kết nối đều đặn tới domain lạ trên port 443, gửi gói dữ liệu nhỏ. Điều này thường gợi ý gì?",
     "options": [
-      "A. Các loại timestamp: Modified, Accessed, Created, Birth/Changed",
-      "B. Các loại firewall rule",
-      "C. Các chế độ boot của Windows",
-      "D. Các kiểu tài khoản user"
+      "A. Lưu lượng C2 (Command & Control) hoặc beaconing",
+      "B. Cập nhật Windows bình thường",
+      "C. Quét port nội bộ",
+      "D. In tài liệu ra máy in"
     ],
     "answer": 0
   },
   {
     "id": 11,
-    "domain": "DFIR Analyst (Digital Forensics)",
-    "skill": "Incident Triage",
+    "domain": "Malware Analyst",
+    "skill": "Persistence",
     "difficulty": "medium",
-    "type": "scenario",
-    "question": "Bạn được báo cáo một máy có dấu hiệu bị ransomware. Bước hợp lý đầu tiên trong DFIR là gì?",
+    "type": "knowledge",
+    "question": "Kỹ thuật persistence phổ biến của malware trên Windows là gì?",
     "options": [
-      "A. Cô lập máy khỏi mạng, sau đó đánh giá phạm vi ảnh hưởng và thu thập chứng cứ",
-      "B. Ngay lập tức format ổ đĩa để sạch malware",
-      "C. Trả lời email tống tiền để thương lượng",
-      "D. Thay đổi toàn bộ mật khẩu nhân viên"
+      "A. Thêm key vào HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run",
+      "B. Chỉ thay đổi hình nền",
+      "C. Xóa toàn bộ log",
+      "D. Đổi tên user"
     ],
     "answer": 0
   },
   {
     "id": 12,
-    "domain": "DFIR Analyst (Digital Forensics)",
-    "skill": "Memory Forensics",
+    "domain": "Malware Analyst",
+    "skill": "Windows Internals",
     "difficulty": "medium",
     "type": "knowledge",
-    "question": "Công cụ nào thường dùng để phân tích dump bộ nhớ (RAM) trong DFIR?",
+    "question": "Khái niệm 'process hollowing' mô tả điều gì?",
     "options": [
-      "A. Volatility",
-      "B. Nmap",
-      "C. Sqlmap",
-      "D. Nessus"
+      "A. Tạo tiến trình hợp lệ rồi thay thế code bên trong bằng mã độc",
+      "B. Tắt tiến trình antivirus",
+      "C. Tăng ưu tiên CPU cho tiến trình",
+      "D. Nén tiến trình lại để chạy nhanh hơn"
     ],
     "answer": 0
   },
   {
     "id": 13,
-    "domain": "DFIR Analyst (Digital Forensics)",
-    "skill": "Memory Forensics",
-    "difficulty": "scenario",
+    "domain": "Malware Analyst",
+    "skill": "API Monitoring",
+    "difficulty": "medium",
     "type": "scenario",
-    "question": "Khi phân tích RAM, bạn thấy một tiến trình lạ kết nối tới IP nước ngoài trên port bất thường. Động thái tiếp theo nên là gì?",
+    "question": "Khi theo dõi API, bạn thấy chuỗi lệnh: VirtualAlloc → WriteProcessMemory → CreateRemoteThread. Chuỗi này thường gợi ý kỹ thuật gì?",
     "options": [
-      "A. Trích xuất tiến trình, module và network connection liên quan để phân tích sâu thêm",
-      "B. Bỏ qua vì có thể chỉ là phần mềm bình thường",
-      "C. Ngay lập tức tắt máy mà không thu thêm dữ liệu",
-      "D. Xóa log hệ điều hành để tiết kiệm dung lượng"
+      "A. Code injection vào tiến trình khác",
+      "B. Mã hóa file log",
+      "C. Thay đổi cấu hình mạng",
+      "D. Cập nhật driver"
     ],
     "answer": 0
   },
   {
     "id": 14,
-    "domain": "DFIR Analyst (Digital Forensics)",
-    "skill": "Network Forensics",
-    "difficulty": "easy",
+    "domain": "Malware Analyst",
+    "skill": "Obfuscation",
+    "difficulty": "medium",
     "type": "knowledge",
-    "question": "Trong phân tích PCAP, giao thức nào thường chứa nội dung HTTP rõ ràng (nếu không dùng HTTPS)?",
+    "question": "Mục tiêu của kỹ thuật obfuscation trong malware là gì?",
     "options": [
-      "A. TCP port 80",
-      "B. UDP port 53",
-      "C. ICMP",
-      "D. ARP"
+      "A. Làm khó analyst và tránh bị phát hiện bởi chữ ký tĩnh",
+      "B. Nén dữ liệu cho nhẹ",
+      "C. Tăng tốc thực thi",
+      "D. Tối ưu bộ nhớ cache"
     ],
     "answer": 0
   },
   {
     "id": 15,
-    "domain": "DFIR Analyst (Digital Forensics)",
-    "skill": "Network Forensics",
-    "difficulty": "medium",
-    "type": "scenario",
-    "question": "Bạn phân tích PCAP và thấy nhiều kết nối nhỏ, đều đặn từ một host nội bộ tới một domain mới đăng ký, payload trông ngẫu nhiên. Điều này gợi ý gì?",
+    "domain": "Malware Analyst",
+    "skill": "String Analysis",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "question": "Phân tích chuỗi (strings) trong file malware có thể giúp tìm thấy gì?",
     "options": [
-      "A. Lưu lượng C2 hoặc data exfiltration được mã hóa/ẩn",
-      "B. Người dùng xem video YouTube",
-      "C. Cập nhật Windows bình thường",
-      "D. Truy vấn DNS nội bộ bình thường"
+      "A. Tên domain/IP, đường dẫn file, API, thông điệp, key hard-code",
+      "B. Cấu hình BIOS",
+      "C. Tốc độ CPU",
+      "D. Dung lượng RAM"
     ],
     "answer": 0
   },
   {
     "id": 16,
-    "domain": "DFIR Analyst (Digital Forensics)",
-    "skill": "Log Analysis",
-    "difficulty": "medium",
-    "type": "scenario",
-    "question": "Trong log web server, bạn thấy tham số URL chứa 'cmd=whoami' và 'cmd=powershell'. Điều này có thể chỉ ra điều gì?",
+    "domain": "Malware Analyst",
+    "skill": "Anti-VM / Anti-Sandbox",
+    "difficulty": "hard",
+    "type": "knowledge",
+    "question": "Ví dụ nào sau đây là kỹ thuật anti-VM/anti-sandbox của malware?",
     "options": [
-      "A. Cố gắng khai thác web shell hoặc RCE trên server",
-      "B. Người dùng test tốc độ mạng",
-      "C. Cấu hình cronjob",
-      "D. Backup database"
+      "A. Kiểm tra tên process phổ biến của VM, kiểm tra MAC OUI, độ phân giải màn hình, thời gian uptime",
+      "B. Tắt Windows Update",
+      "C. Đổi tên file thực thi",
+      "D. Chạy trên cổng 80"
     ],
     "answer": 0
   },
   {
     "id": 17,
-    "domain": "DFIR Analyst (Digital Forensics)",
-    "skill": "Email Forensics",
+    "domain": "Malware Analyst",
+    "skill": "Ransomware",
     "difficulty": "medium",
     "type": "knowledge",
-    "question": "Khi phân tích email, phần nào giúp xác định đường đi thực tế của email qua các mail server?",
+    "question": "Đặc điểm nổi bật của ransomware so với các loại malware khác là gì?",
     "options": [
-      "A. Các trường 'Received' trong header",
-      "B. Trường 'Subject'",
-      "C. Hình nền trong email",
-      "D. Font chữ sử dụng"
+      "A. Mã hóa dữ liệu nạn nhân và đòi tiền chuộc để giải mã",
+      "B. Chỉ dùng để đào tiền ảo",
+      "C. Chỉ dùng để gửi spam",
+      "D. Chỉ thay đổi giao diện website"
     ],
     "answer": 0
   },
   {
     "id": 18,
-    "domain": "DFIR Analyst (Digital Forensics)",
-    "skill": "Artifacts Correlation",
-    "difficulty": "hard",
+    "domain": "Malware Analyst",
+    "skill": "Banking / Spyware",
+    "difficulty": "medium",
     "type": "knowledge",
-    "question": "Lý do chính cần tương quan nhiều loại artifact (RAM, disk, log mạng, registry) trong một cuộc điều tra là gì?",
+    "question": "Banking trojan thường nhắm tới mục tiêu nào?",
     "options": [
-      "A. Xây dựng timeline đầy đủ và kiểm chứng chéo các dấu vết",
-      "B. Tăng kích thước báo cáo cho ấn tượng",
-      "C. Giảm thời gian điều tra xuống 0",
-      "D. Có thể bỏ qua chain of custody"
+      "A. Thông tin đăng nhập ngân hàng, giao dịch tài chính",
+      "B. Thông tin cấu hình router",
+      "C. Thư mục hệ điều hành",
+      "D. Ứng dụng chơi game"
     ],
     "answer": 0
   },
   {
     "id": 19,
-    "domain": "DFIR Analyst (Digital Forensics)",
-    "skill": "Timeline Analysis",
-    "difficulty": "medium",
+    "domain": "Malware Analyst",
+    "skill": "C2 Protocols",
+    "difficulty": "hard",
     "type": "knowledge",
-    "question": "Mục đích chính của phân tích timeline trong DFIR là gì?",
+    "question": "Vì sao nhiều malware hiện đại dùng HTTPS hoặc các dịch vụ hợp pháp (CDN, cloud, Telegram, Discord) làm kênh C2?",
     "options": [
-      "A. Sắp xếp các sự kiện theo thời gian để hiểu trình tự tấn công",
-      "B. Tối ưu hiệu năng hệ thống",
-      "C. Tạo biểu đồ cho đẹp báo cáo",
-      "D. Giảm dung lượng log"
+      "A. Để ngụy trang lưu lượng C2 vào traffic bình thường và tránh bị chặn theo port",
+      "B. Để tăng tốc độ tấn công",
+      "C. Để giảm chi phí máy chủ",
+      "D. Để bắt buộc nạn nhân nâng cấp trình duyệt"
     ],
     "answer": 0
   },
   {
     "id": 20,
-    "domain": "DFIR Analyst (Digital Forensics)",
-    "skill": "Reporting",
-    "difficulty": "easy",
+    "domain": "Malware Analyst",
+    "skill": "YARA / Signatures",
+    "difficulty": "medium",
     "type": "knowledge",
-    "question": "Trong báo cáo DFIR, phần 'Findings' nên tập trung vào nội dung gì?",
+    "question": "YARA rule thường được dùng để làm gì trong malware analysis?",
     "options": [
-      "A. Những gì đã phát hiện được: dấu vết, nguyên nhân, phạm vi ảnh hưởng",
-      "B. Chỉ liệt kê công cụ đã sử dụng",
-      "C. Chỉ liệt kê lệnh đã gõ",
-      "D. Danh sách lỗi cấu hình không liên quan"
+      "A. Mô tả mẫu (pattern) của malware để quét, phân loại và săn tìm (hunt)",
+      "B. Cấu hình firewall",
+      "C. Quản lý tài khoản AD",
+      "D. Nén log hệ thống"
     ],
     "answer": 0
   },
   {
     "id": 21,
-    "domain": "DFIR Analyst (Digital Forensics)",
-    "skill": "Disk Imaging",
-    "difficulty": "medium",
-    "type": "scenario",
-    "question": "Khi tạo image ổ đĩa nghi bị xâm nhập, tại sao nên dùng write blocker phần cứng hoặc phần mềm?",
+    "domain": "Malware Analyst",
+    "skill": "Lab Safety",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "question": "Biện pháp nào sau đây giúp đảm bảo an toàn khi dựng lab phân tích mã độc?",
     "options": [
-      "A. Ngăn việc ghi mới lên ổ gốc, bảo vệ tính toàn vẹn chứng cứ",
-      "B. Tăng tốc độ đọc dữ liệu",
-      "C. Giảm kích thước image",
-      "D. Tự động xoá file rác"
+      "A. Dùng máy ảo cô lập, tắt shared folder/hyper-v integration không cần thiết, chặn Internet hoặc chỉ cho đi qua proxy kiểm soát",
+      "B. Phân tích trực tiếp trên máy cá nhân đang dùng Internet bình thường",
+      "C. Tắt antivirus rồi mở file trên máy chính",
+      "D. Chia sẻ folder mã độc qua mạng nội bộ công ty"
     ],
     "answer": 0
   },
   {
     "id": 22,
-    "domain": "DFIR Analyst (Digital Forensics)",
-    "skill": "File Carving",
-    "difficulty": "medium",
+    "domain": "Malware Analyst",
+    "skill": "Static Tools",
+    "difficulty": "easy",
     "type": "knowledge",
-    "question": "File carving là kỹ thuật gì trong forensics?",
+    "question": "Công cụ nào sau đây thường dùng để disassemble mã máy của malware?",
     "options": [
-      "A. Khôi phục file dựa trên header/footer và cấu trúc dữ liệu chứ không dựa vào bảng file system",
-      "B. Nén file log để tiết kiệm chỗ",
-      "C. Chia nhỏ file lớn thành nhiều phần",
-      "D. Mã hóa file trên ổ đĩa"
+      "A. IDA Pro hoặc Ghidra",
+      "B. Wireshark",
+      "C. Burp Suite",
+      "D. Nmap"
     ],
     "answer": 0
   },
   {
     "id": 23,
-    "domain": "DFIR Analyst (Digital Forensics)",
-    "skill": "Anti-Forensics",
-    "difficulty": "hard",
+    "domain": "Malware Analyst",
+    "skill": "Dynamic Tools",
+    "difficulty": "easy",
     "type": "knowledge",
-    "question": "Ví dụ nào sau đây thuộc nhóm kỹ thuật anti-forensics của attacker?",
+    "question": "Công cụ nào thường dùng để giám sát thay đổi registry và file system khi chạy malware?",
     "options": [
-      "A. Xóa log, ghi đè file, dùng timestomping để thay đổi timestamp",
-      "B. Sử dụng mật khẩu mạnh",
-      "C. Bật tường lửa cá nhân",
-      "D. Sử dụng HTTPS"
+      "A. Sysmon, Procmon (Process Monitor)",
+      "B. Sqlmap",
+      "C. Dirbuster",
+      "D. Nikto"
     ],
     "answer": 0
   },
   {
     "id": 24,
-    "domain": "DFIR Analyst (Digital Forensics)",
-    "skill": "Timestomping",
+    "domain": "Malware Analyst",
+    "skill": "Sysinternals",
     "difficulty": "medium",
-    "type": "scenario",
-    "question": "Trong điều tra, bạn thấy một file thực thi độc hại nhưng timestamp 'Created' lại rất cũ, không khớp với các artifact khác. Điều này gợi ý gì?",
+    "type": "knowledge",
+    "question": "Process Explorer/Process Hacker giúp malware analyst làm gì?",
     "options": [
-      "A. Attacker có thể đã dùng timestomping để che giấu thời điểm tạo file",
-      "B. File không liên quan đến cuộc tấn công",
-      "C. Hệ thống bị lỗi đồng hồ nên bỏ qua",
-      "D. Đây là file hệ thống hợp lệ"
+      "A. Quan sát tiến trình, tree, handle, DLL loaded, memory usage của malware",
+      "B. Cấu hình router",
+      "C. Quản lý user domain",
+      "D. Sửa mã nguồn ứng dụng web"
     ],
     "answer": 0
   },
   {
     "id": 25,
-    "domain": "DFIR Analyst (Digital Forensics)",
-    "skill": "Cloud DFIR",
+    "domain": "Malware Analyst",
+    "skill": "Indicators Extraction",
     "difficulty": "medium",
-    "type": "knowledge",
-    "question": "Thách thức lớn khi làm DFIR trên môi trường cloud là gì?",
+    "type": "scenario",
+    "question": "Sau khi phân tích, bạn trích xuất được domain, IP, hash, và tên mutex mà malware sử dụng. Các thông tin này gọi là gì?",
     "options": [
-      "A. Hạn chế quyền truy cập tầng hạ tầng, log phân tán trên nhiều dịch vụ",
-      "B. Không thể dùng bất kỳ công cụ forensics nào",
-      "C. Không tồn tại log trên cloud",
-      "D. Không thể tạo snapshot máy ảo"
+      "A. Indicator of Compromise (IOC)",
+      "B. Vulnerability",
+      "C. Patch",
+      "D. Service Level Agreement"
     ],
     "answer": 0
   },
   {
     "id": 26,
-    "domain": "DFIR Analyst (Digital Forensics)",
-    "skill": "Linux Forensics",
-    "difficulty": "medium",
-    "type": "knowledge",
-    "question": "Trên Linux, file nào thường chứa lịch sử lệnh shell của user (ví dụ bash)?",
+    "domain": "Malware Analyst",
+    "skill": "String Deobfuscation",
+    "difficulty": "hard",
+    "type": "scenario",
+    "question": "Mã độc lưu chuỗi C2 ở dạng XOR với một key 1 byte. Cách nhanh để tìm C2 là gì?",
     "options": [
-      "A. ~/.bash_history",
-      "B. /etc/passwd",
-      "C. /var/log/dmesg",
-      "D. /etc/hosts"
+      "A. Viết script brute force XOR với 256 giá trị và tìm chuỗi trông giống domain/IP",
+      "B. Nén file rồi mở lại",
+      "C. Đổi đuôi file sang .txt",
+      "D. Đổi timezone hệ điều hành"
     ],
     "answer": 0
   },
   {
     "id": 27,
-    "domain": "DFIR Analyst (Digital Forensics)",
-    "skill": "Linux Forensics",
-    "difficulty": "scenario",
+    "domain": "Malware Analyst",
+    "skill": "Process Injection",
+    "difficulty": "medium",
     "type": "scenario",
-    "question": "Trong quá trình điều tra, bạn phát hiện cron job lạ chạy script từ /tmp mỗi phút. Điều hợp lý là gì?",
+    "question": "Khi giám sát, bạn thấy malware tạo process 'svchost.exe' với tham số lạ, sau đó inject code vào đó. Mục đích chính là gì?",
     "options": [
-      "A. Phân tích script, nguồn gốc tạo cron và vai trò của nó trong cuộc tấn công",
-      "B. Xóa luôn script và cron rồi đóng case",
-      "C. Bỏ qua vì cron thường là hợp lệ",
-      "D. Tắt toàn bộ dịch vụ cron trên server"
+      "A. Ẩn hoạt động trong process hệ thống hợp lệ để khó phát hiện",
+      "B. Tăng tốc độ mạng",
+      "C. Giảm dung lượng RAM",
+      "D. Tạo thêm user hợp lệ"
     ],
     "answer": 0
   },
   {
     "id": 28,
-    "domain": "DFIR Analyst (Digital Forensics)",
-    "skill": "Windows Persistence",
-    "difficulty": "medium",
+    "domain": "Malware Analyst",
+    "skill": "Rootkits",
+    "difficulty": "hard",
     "type": "knowledge",
-    "question": "Kỹ thuật persistence nào sau đây phổ biến trên Windows?",
+    "question": "Rootkit khác gì so với malware thông thường?",
     "options": [
-      "A. Thêm key vào Run/RunOnce trong registry hoặc tạo scheduled task độc hại",
-      "B. Chỉ đổi tên file hệ điều hành",
-      "C. Tắt Windows Defender",
-      "D. Đổi hình nền máy tính"
+      "A. Rootkit tập trung vào ẩn sự tồn tại của malware/bản thân nó bằng cách can thiệp sâu vào hệ thống (kernel, driver)",
+      "B. Rootkit chỉ dùng trên Linux",
+      "C. Rootkit chỉ dùng để đào coin",
+      "D. Rootkit không thể bị phát hiện"
     ],
     "answer": 0
   },
   {
     "id": 29,
-    "domain": "DFIR Analyst (Digital Forensics)",
-    "skill": "Browser Artifacts",
+    "domain": "Malware Analyst",
+    "skill": "Log / DFIR Integration",
     "difficulty": "medium",
     "type": "knowledge",
-    "question": "Dữ liệu trình duyệt (history, cookies, cache) có thể giúp DFIR analyst điều tra điều gì?",
+    "question": "Vì sao malware analyst cần phối hợp với SOC/DFIR khi xử lý sự cố thực tế?",
     "options": [
-      "A. Website đã truy cập, thời gian, phiên đăng nhập, có click link phishing hay không",
-      "B. Cấu hình BIOS",
-      "C. Thông tin phần cứng CPU",
-      "D. Danh sách driver thiết bị"
+      "A. SOC/DFIR cung cấp log, timeline, phạm vi lây nhiễm để analyst hiểu bối cảnh và đề xuất IOC/phòng thủ",
+      "B. Để chia sẻ mật khẩu admin",
+      "C. Để tắt hệ thống giám sát",
+      "D. Để giảm lượng log lưu trữ"
     ],
     "answer": 0
   },
   {
     "id": 30,
-    "domain": "DFIR Analyst (Digital Forensics)",
-    "skill": "Ransomware",
+    "domain": "Malware Analyst",
+    "skill": "Packing Detection",
     "difficulty": "medium",
     "type": "scenario",
-    "question": "Trong một sự cố ransomware, thông tin nào DFIR analyst cần thu thập sớm nhất để đánh giá khả năng khôi phục?",
+    "question": "Bạn chạy 'strings' nhưng rất ít chuỗi đọc được, entropy section .text cao, import rất ít. Bước tiếp theo hợp lý là gì?",
     "options": [
-      "A. Loại ransomware, phạm vi file bị mã hóa, tình trạng backup gần nhất",
-      "B. Màu nền màn hình của nạn nhân",
-      "C. Tên user đăng nhập Windows",
-      "D. Số lượng máy in trong mạng"
+      "A. Thử phát hiện packer (PEiD, DIE) và tiến hành dynamic analysis/unpacking",
+      "B. Kết luận file sạch",
+      "C. Xóa file ngay lập tức",
+      "D. Gửi cho người dùng mở thử"
     ],
     "answer": 0
   },
   {
     "id": 31,
-    "domain": "DFIR Analyst (Digital Forensics)",
-    "skill": "Malware Triage",
+    "domain": "Malware Analyst",
+    "skill": "Macro Malware",
     "difficulty": "medium",
     "type": "scenario",
-    "question": "Bạn nhận được một file nghi malware từ hệ thống EDR. Bước triage đầu tiên phù hợp là gì?",
+    "question": "Với mẫu malware là file Word chứa macro, bước phân tích hợp lý là gì?",
     "options": [
-      "A. Tính hash, tra cứu trên VirusTotal/threat intel rồi quyết định phân tích sâu thêm hay không",
-      "B. Mở trực tiếp trên máy cá nhân để xem",
-      "C. Xóa file ngay lập tức",
-      "D. Gửi file cho tất cả nhân viên để cảnh báo"
+      "A. Dùng công cụ như olevba, olevba3, mraptor để trích xuất và phân tích macro",
+      "B. Mở file bằng Word và bấm Enable Content trên máy thật",
+      "C. Đổi đuôi file sang .txt",
+      "D. Nén file lại bằng ZIP"
     ],
     "answer": 0
   },
   {
     "id": 32,
-    "domain": "DFIR Analyst (Digital Forensics)",
-    "skill": "Log Preservation",
-    "difficulty": "easy",
+    "domain": "Malware Analyst",
+    "skill": "Script Malware",
+    "difficulty": "medium",
     "type": "knowledge",
-    "question": "Khi bắt đầu điều tra, tại sao cần nhanh chóng lưu giữ (preserve) log liên quan?",
+    "question": "Vì sao malware dùng PowerShell/JavaScript ngày càng phổ biến?",
     "options": [
-      "A. Log có thể bị xoá bởi rotation, bởi attacker hoặc bởi hệ thống",
-      "B. Để giảm dung lượng ổ cứng",
-      "C. Để tránh phải xem log",
-      "D. Để hệ thống chạy nhanh hơn"
+      "A. Tận dụng công cụ có sẵn trong hệ thống, khó phân biệt với hoạt động hợp lệ",
+      "B. Chạy chậm hơn nên ít bị phát hiện",
+      "C. Không cần Internet",
+      "D. Không tạo log hệ thống"
     ],
     "answer": 0
   },
   {
     "id": 33,
-    "domain": "DFIR Analyst (Digital Forensics)",
-    "skill": "IR Plan",
+    "domain": "Malware Analyst",
+    "skill": "Behavioral Analysis",
     "difficulty": "medium",
-    "type": "knowledge",
-    "question": "Vì sao tổ chức cần có sẵn Incident Response Plan trước khi xảy ra sự cố?",
+    "type": "scenario",
+    "question": "Trong dynamic analysis, bạn tập trung quan sát những hành vi nào của malware?",
     "options": [
-      "A. Để khi sự cố xảy ra có quy trình rõ ràng, giảm thời gian phản ứng và sai sót",
-      "B. Để không cần đào tạo nhân viên",
-      "C. Để tránh phải mua công cụ bảo mật",
-      "D. Để không cần backup dữ liệu"
+      "A. Tạo/sửa/xóa file, registry, network connection, process, service",
+      "B. Độ sáng màn hình",
+      "C. Tốc độ quay quạt CPU",
+      "D. Dung lượng pin"
     ],
     "answer": 0
   },
   {
     "id": 34,
-    "domain": "DFIR Analyst (Digital Forensics)",
-    "skill": "Mobile Forensics",
-    "difficulty": "medium",
+    "domain": "Malware Analyst",
+    "skill": "Anti-Debugging",
+    "difficulty": "hard",
     "type": "knowledge",
-    "question": "Thách thức đặc trưng của mobile forensics so với PC là gì?",
+    "question": "Kỹ thuật anti-debugging phổ biến của malware là gì?",
     "options": [
-      "A. Mã hóa mạnh, khoá bootloader, nhiều hệ điều hành và kiểu lưu trữ khác nhau",
-      "B. Không có bất kỳ cơ chế log nào",
-      "C. Không thể kết nối thiết bị với máy tính",
-      "D. Không tồn tại công cụ hỗ trợ"
+      "A. Gọi API như IsDebuggerPresent, CheckRemoteDebuggerPresent hoặc dùng timing check, exception trick",
+      "B. Đổi icon chương trình",
+      "C. Thay đổi DNS server",
+      "D. Xóa file log"
     ],
     "answer": 0
   },
   {
     "id": 35,
-    "domain": "DFIR Analyst (Digital Forensics)",
-    "skill": "Legal Considerations",
-    "difficulty": "medium",
-    "type": "knowledge",
-    "question": "Trong DFIR, tại sao yếu tố pháp lý (legal) lại quan trọng?",
+    "domain": "Malware Analyst",
+    "skill": "Code Flow",
+    "difficulty": "hard",
+    "type": "scenario",
+    "question": "Khi reverse một function lớn, bạn thấy rất nhiều jump không cần thiết và control flow bị rối. Đây là dấu hiệu của gì?",
     "options": [
-      "A. Chứng cứ có thể phải sử dụng trước toà hoặc với cơ quan chức năng, nên phải được thu thập và bảo quản đúng quy định",
-      "B. Để tránh phải báo cáo sự cố",
-      "C. Để có thể xoá log thoải mái",
-      "D. Để không cần chain of custody"
+      "A. Control-flow obfuscation",
+      "B. Code sạch, tối ưu",
+      "C. Compiler lỗi",
+      "D. Hệ điều hành hỏng"
     ],
     "answer": 0
   },
   {
     "id": 36,
-    "domain": "DFIR Analyst (Digital Forensics)",
-    "skill": "Root Cause",
-    "difficulty": "medium",
-    "type": "knowledge",
-    "question": "Mục tiêu của phân tích nguyên nhân gốc (root cause analysis) trong DFIR là gì?",
+    "domain": "Malware Analyst",
+    "skill": "Config Extraction",
+    "difficulty": "hard",
+    "type": "scenario",
+    "question": "Tại sao trích xuất cấu hình (config) của malware (C2, key, campaign ID, flags…) lại quan trọng?",
     "options": [
-      "A. Xác định điểm vào, kỹ thuật tấn công ban đầu để đưa ra biện pháp phòng ngừa",
-      "B. Tìm ai là người chịu trách nhiệm tài chính",
-      "C. Giảm dung lượng ổ đĩa",
-      "D. Tăng số lượng công cụ bảo mật"
+      "A. Giúp hiểu rõ chiến dịch, IOC và cách phòng thủ, chia sẻ với cộng đồng/khách hàng",
+      "B. Chỉ để tăng độ khó reverse",
+      "C. Để nén file",
+      "D. Để thay đổi mã độc"
     ],
     "answer": 0
   },
   {
     "id": 37,
-    "domain": "DFIR Analyst (Digital Forensics)",
-    "skill": "Host vs Network Forensics",
+    "domain": "Malware Analyst",
+    "skill": "Classification",
     "difficulty": "medium",
     "type": "knowledge",
-    "question": "Điểm khác nhau chính giữa host-based forensics và network forensics là gì?",
+    "question": "Khi phân loại malware theo hành vi, nhóm 'trojan' thường có đặc điểm nào?",
     "options": [
-      "A. Host forensics tập trung vào artifact trên máy cuối; network forensics tập trung vào lưu lượng và thiết bị mạng",
-      "B. Host forensics chỉ dùng cho Windows, network forensics chỉ dùng cho Linux",
-      "C. Host forensics không thể dùng hash",
-      "D. Network forensics không cần log"
+      "A. Giả dạng phần mềm hợp lệ nhưng thực hiện hành vi độc hại",
+      "B. Tự nhân bản lây lan không cần tương tác",
+      "C. Chỉ mã hóa dữ liệu",
+      "D. Chỉ nghe lén bàn phím"
     ],
     "answer": 0
   },
   {
     "id": 38,
-    "domain": "DFIR Analyst (Digital Forensics)",
-    "skill": "Case Management",
-    "difficulty": "easy",
+    "domain": "Malware Analyst",
+    "skill": "Worms & Botnets",
+    "difficulty": "medium",
     "type": "knowledge",
-    "question": "Tại sao DFIR team cần hệ thống quản lý case/ticket riêng?",
+    "question": "Worm khác với trojan ở điểm nào?",
     "options": [
-      "A. Theo dõi công việc, timeline, chứng cứ và người phụ trách từng bước",
-      "B. Để xóa dữ liệu sự cố nhanh hơn",
-      "C. Để thay thế SIEM",
-      "D. Để giảm số người trong team"
+      "A. Worm tự động lây lan qua mạng mà không cần người dùng chạy thủ công",
+      "B. Worm luôn vô hại",
+      "C. Worm chỉ chạy trên Linux",
+      "D. Worm không bao giờ dùng mạng"
     ],
     "answer": 0
   },
   {
     "id": 39,
-    "domain": "DFIR Analyst (Digital Forensics)",
-    "skill": "Tool Validation",
+    "domain": "Malware Analyst",
+    "skill": "Crypto Basics",
     "difficulty": "medium",
     "type": "knowledge",
-    "question": "Vì sao cần kiểm thử và xác nhận độ tin cậy của công cụ forensics trước khi sử dụng chính thức?",
+    "question": "Trong ransomware, vì sao việc mã độc dùng Crypto chuẩn (AES/RSA đúng cách) lại khiến việc giải mã trở nên rất khó nếu không có key?",
     "options": [
-      "A. Đảm bảo kết quả chính xác, có thể bảo vệ được trước toà hoặc kiểm toán",
-      "B. Để công cụ chạy nhanh hơn",
-      "C. Để giảm dung lượng log",
-      "D. Để tránh phải dùng chain of custody"
+      "A. Vì thuật toán đã được thiết kế để chống lại brute-force trong thời gian khả thi",
+      "B. Vì file bị xoá luôn sau khi mã hóa",
+      "C. Vì nạn nhân không được phép backup",
+      "D. Vì key luôn công khai"
     ],
     "answer": 0
   },
   {
     "id": 40,
-    "domain": "DFIR Analyst (Digital Forensics)",
-    "skill": "Steganography",
-    "difficulty": "medium",
+    "domain": "Malware Analyst",
+    "skill": "Reporting",
+    "difficulty": "easy",
     "type": "knowledge",
-    "question": "Trong bối cảnh DFIR, tại sao cần quan tâm tới steganography (giấu tin) trong file media?",
+    "question": "Trong báo cáo malware analysis gửi cho SOC/khách hàng, phần quan trọng nhất đối với phòng thủ là gì?",
     "options": [
-      "A. Attacker có thể giấu dữ liệu hoặc cấu hình C2 trong ảnh/âm thanh để tránh bị phát hiện",
-      "B. Để nén log tốt hơn",
-      "C. Để tăng chất lượng hình ảnh",
-      "D. Để mã hóa toàn bộ ổ đĩa"
+      "A. IOC, hành vi chính, kỹ thuật tấn công và khuyến nghị phòng thủ",
+      "B. Nhật ký cảm xúc của analyst",
+      "C. Mọi đoạn disassembly chi tiết",
+      "D. Tất cả lệnh debugger đã dùng"
     ],
     "answer": 0
   },
   {
     "id": 41,
-    "domain": "DFIR Analyst (Digital Forensics)",
-    "skill": "PCAP Tools",
-    "difficulty": "easy",
+    "domain": "Malware Analyst",
+    "skill": "Automation",
+    "difficulty": "medium",
     "type": "knowledge",
-    "question": "Công cụ nào sau đây thường dùng để phân tích file PCAP trong điều tra số?",
+    "question": "Tại sao nên tự động hóa một số bước phân tích malware (trích xuất hash, strings, PE info,…)?",
     "options": [
-      "A. Wireshark",
-      "B. Nmap",
-      "C. Sqlmap",
-      "D. John the Ripper"
+      "A. Tiết kiệm thời gian, giảm lỗi lặp và giúp analyst tập trung vào phần khó hơn",
+      "B. Để không cần hiểu malware",
+      "C. Để tránh phải viết báo cáo",
+      "D. Để không cần sandbox"
     ],
     "answer": 0
   },
   {
     "id": 42,
-    "domain": "DFIR Analyst (Digital Forensics)",
-    "skill": "Zeek / Network Metadata",
+    "domain": "Malware Analyst",
+    "skill": "Threat Intelligence",
     "difficulty": "medium",
     "type": "knowledge",
-    "question": "Ưu điểm của việc dùng Zeek (Bro) hoặc hệ thống tạo log metadata mạng so với chỉ lưu PCAP thô là gì?",
+    "question": "Khi tra hash malware trên VirusTotal và nhiều nguồn TI, bạn có thể thu được gì?",
     "options": [
-      "A. Giảm dung lượng lưu trữ nhưng vẫn giữ thông tin phiên, dễ tìm kiếm và tương quan",
-      "B. Không cần cấu hình gì thêm",
-      "C. Tự động chặn mọi tấn công",
-      "D. Thay thế hoàn toàn firewall"
+      "A. Tên họ hàng biến thể, IOC bổ sung, mẫu rule YARA, liên kết tới campaign/nhóm APT",
+      "B. Thông tin lương của attacker",
+      "C. Cấu hình router của nạn nhân",
+      "D. Mật khẩu Wi-Fi"
     ],
     "answer": 0
   },
   {
     "id": 43,
-    "domain": "DFIR Analyst (Digital Forensics)",
-    "skill": "Working Copies",
+    "domain": "Malware Analyst",
+    "skill": "Ethics",
     "difficulty": "easy",
     "type": "knowledge",
-    "question": "Khi phân tích image ổ đĩa, tại sao nên làm việc trên bản copy thay vì bản gốc?",
+    "question": "Về mặt đạo đức/nghề nghiệp, malware analyst cần tuân thủ điều gì?",
     "options": [
-      "A. Tránh làm thay đổi chứng cứ gốc, giữ nguyên cho mục đích pháp lý",
-      "B. Bản copy chạy nhanh hơn",
-      "C. Bản gốc không thể mount được",
-      "D. Để giảm dung lượng"
+      "A. Không sử dụng kiến thức/mẫu đã phân tích để tấn công, chỉ phục vụ phòng thủ và nghiên cứu hợp pháp",
+      "B. Có thể bán mẫu cho bất kỳ ai trả giá cao",
+      "C. Được phép phát tán thử trên Internet để test thực tế",
+      "D. Được phép thu tiền chuộc thay ransomware"
     ],
     "answer": 0
   },
   {
     "id": 44,
-    "domain": "DFIR Analyst (Digital Forensics)",
-    "skill": "Log Normalization",
+    "domain": "Malware Analyst",
+    "skill": "Environment Artifacts",
     "difficulty": "medium",
-    "type": "knowledge",
-    "question": "Log normalization trong DFIR giúp ích điều gì?",
+    "type": "scenario",
+    "question": "Sau khi chạy malware, bạn nên thu thập những artifact nào từ máy để phục vụ phân tích/DFIR?",
     "options": [
-      "A. Chuẩn hoá nhiều định dạng log khác nhau về cấu trúc chung để dễ tìm kiếm và so sánh",
-      "B. Giảm kích thước log xuống 0",
-      "C. Mã hóa log để không ai đọc được",
-      "D. Xoá các trường không quan trọng"
+      "A. Memory dump, log hệ thống, bản snapshot, danh sách file/registry mới/đổi, PCAP nếu có",
+      "B. Chỉ chụp ảnh màn hình desktop",
+      "C. Chỉ lưu file .exe ban đầu",
+      "D. Chỉ ghi lại thời gian bắt đầu chạy"
     ],
     "answer": 0
   },
   {
     "id": 45,
-    "domain": "DFIR Analyst (Digital Forensics)",
-    "skill": "Time Synchronization",
+    "domain": "Malware Analyst",
+    "skill": "Mobile Malware",
     "difficulty": "medium",
     "type": "knowledge",
-    "question": "Tại sao đồng bộ thời gian (NTP) giữa các hệ thống lại quan trọng với DFIR?",
+    "question": "Mobile malware trên Android thường phân phối dưới dạng gì?",
     "options": [
-      "A. Để timeline giữa các log/thiết bị khớp nhau, giúp tái dựng sự kiện chính xác",
-      "B. Để tăng tốc CPU",
-      "C. Để giảm dung lượng RAM",
-      "D. Để tắt bớt log"
+      "A. File APK cài ngoài (sideload), app giả mạo trên store, link phishing dẫn tới app độc",
+      "B. File .exe gửi qua email",
+      "C. Script .bat",
+      "D. File .iso"
     ],
     "answer": 0
   },
   {
     "id": 46,
-    "domain": "DFIR Analyst (Digital Forensics)",
-    "skill": "Collaboration",
-    "difficulty": "easy",
+    "domain": "Malware Analyst",
+    "skill": "Evasion",
+    "difficulty": "hard",
     "type": "knowledge",
-    "question": "Trong một cuộc điều tra lớn, tại sao DFIR analyst cần phối hợp chặt với SOC và team hạ tầng?",
+    "question": "Một kỹ thuật giúp malware trốn tránh antivirus dựa trên chữ ký là gì?",
     "options": [
-      "A. SOC cung cấp cảnh báo/log, hạ tầng hỗ trợ thao tác trên hệ thống, giúp điều tra và ứng cứu hiệu quả",
-      "B. Để chia sẻ mật khẩu admin",
-      "C. Để giảm số lượng log",
-      "D. Để tắt bớt hệ thống giám sát"
+      "A. Thay đổi nhỏ binary mỗi lần (polymorphic/metamorphic) để hash và pattern khác nhau",
+      "B. Luôn dùng cùng một binary không đổi",
+      "C. Chỉ chạy vào ban đêm",
+      "D. Tăng kích thước file lên rất lớn"
     ],
     "answer": 0
   },
   {
     "id": 47,
-    "domain": "DFIR Analyst (Digital Forensics)",
-    "skill": "Documentation",
-    "difficulty": "easy",
-    "type": "knowledge",
-    "question": "Vì sao việc ghi chép chi tiết các bước đã làm trong quá trình DFIR lại quan trọng?",
+    "domain": "Malware Analyst",
+    "skill": "Sandbox Evasion",
+    "difficulty": "hard",
+    "type": "scenario",
+    "question": "Malware chỉ thực thi payload sau 2 giờ hệ thống hoạt động và khi phát hiện có tương tác chuột/bàn phím. Mục tiêu chính là gì?",
     "options": [
-      "A. Để có thể tái hiện, giải thích và bảo vệ kết luận điều tra nếu bị chất vấn",
-      "B. Để báo cáo trông dài hơn",
-      "C. Để tránh phải dùng công cụ forensics",
-      "D. Để ẩn bớt lỗi trong quá trình điều tra"
+      "A. Né sandbox tự động vốn chỉ chạy trong thời gian ngắn và thiếu tương tác người dùng",
+      "B. Tăng trải nghiệm người dùng",
+      "C. Tiết kiệm pin",
+      "D. Giảm dung lượng log"
     ],
     "answer": 0
   },
   {
     "id": 48,
-    "domain": "DFIR Analyst (Digital Forensics)",
-    "skill": "Data Recovery",
+    "domain": "Malware Analyst",
+    "skill": "Cooperation",
     "difficulty": "medium",
     "type": "knowledge",
-    "question": "Trong nhiều vụ việc, tại sao khả năng khôi phục dữ liệu (data recovery) cũng là một phần quan trọng của DFIR?",
+    "question": "Tại sao trong doanh nghiệp lớn, malware analyst thường không làm một mình?",
     "options": [
-      "A. Giúp tổ chức nhanh chóng trở lại hoạt động, giảm tác động kinh doanh sau sự cố",
-      "B. Để tăng dung lượng ổ cứng",
-      "C. Để không cần backup nữa",
-      "D. Để che giấu dấu vết tấn công"
+      "A. Cần phối hợp với SOC, DFIR, network, system admin để triển khai IOC, containment và remediation",
+      "B. Vì công cụ quá khó dùng",
+      "C. Vì không ai muốn làm",
+      "D. Vì không cần báo cáo"
     ],
     "answer": 0
   },
   {
     "id": 49,
-    "domain": "DFIR Analyst (Digital Forensics)",
-    "skill": "Continuous Improvement",
+    "domain": "Malware Analyst",
+    "skill": "Career Skills",
     "difficulty": "medium",
     "type": "knowledge",
-    "question": "Bài học rút ra từ một cuộc điều tra DFIR nên được sử dụng như thế nào?",
+    "question": "Kỹ năng nền tảng quan trọng với một Malware Analyst là gì?",
     "options": [
-      "A. Cập nhật playbook, quy trình, use case phát hiện và biện pháp phòng ngừa",
-      "B. Lưu trữ rồi bỏ quên",
-      "C. Chỉ dùng để báo cáo cho lãnh đạo rồi xoá",
-      "D. Chỉ dùng để đánh giá cá nhân"
+      "A. Nắm vững hệ điều hành (nhất là Windows), lập trình C/C++/ASM cơ bản, hiểu mạng và bảo mật",
+      "B. Chỉ cần biết dùng Word/Excel",
+      "C. Chỉ cần thuộc lòng tên các loại virus",
+      "D. Chỉ cần biết cấu hình router"
     ],
     "answer": 0
   },
   {
     "id": 50,
-    "domain": "DFIR Analyst (Digital Forensics)",
+    "domain": "Malware Analyst",
     "skill": "Mindset",
     "difficulty": "easy",
     "type": "knowledge",
-    "question": "Tư duy quan trọng của một DFIR analyst giỏi là gì?",
+    "question": "Tư duy phù hợp nhất với công việc phân tích mã độc là gì?",
     "options": [
-      "A. Tư duy điều tra, kiên nhẫn, chú ý chi tiết và luôn kiểm chứng chéo chứng cứ",
-      "B. Chỉ tin vào cảm giác cá nhân",
-      "C. Luôn cố xoá nhanh sự cố để đỡ tốn thời gian",
-      "D. Chỉ quan tâm tới công cụ, không cần hiểu bối cảnh"
+      "A. Tò mò, kiên nhẫn, tỉ mỉ, thích mổ xẻ cách mọi thứ hoạt động",
+      "B. Ghét chi tiết, chỉ thích trả lời nhanh",
+      "C. Chỉ thích làm việc không cần suy nghĩ",
+      "D. Chỉ quan tâm đến giao tiếp, không cần kỹ thuật"
     ],
     "answer": 0
   }
@@ -757,7 +757,7 @@ async function seed() {
   try {
     await connectDB();
 
-    // await Roadmap.deleteMany({});
+    // await Roadmap.deleteMany {};
     await QuizQuestion.create(Web_pentest);
 
     console.log("Seed Success");

@@ -140,7 +140,7 @@ const getProgressStudent2 = async (req, res) => {
     // }
 
     // tìm progress
-    const progress = await Progress.findOne({
+    const progress = await Progress.find({
       studentId
     });
 
