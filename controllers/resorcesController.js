@@ -7,7 +7,7 @@ const Resource = require('../models/Resource');
  */
 const getAllResources = async (req, res) => {
     try {
-        const { category, language, level, search } = req.query;
+        const { category, language, level, search, platform } = req.query;
         const filter = {};
 
         // 1. Xây dựng bộ lọc
@@ -19,6 +19,9 @@ const getAllResources = async (req, res) => {
         }
         if (level) {
             filter.level = level;
+        }
+        if (platform) {
+            filter.platform = platform;
         }
 
         // 2. Xây dựng tìm kiếm (Search)

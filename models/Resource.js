@@ -39,7 +39,14 @@ const ResourceSchema = new Schema({
     notes: {
         type: String,
         trim: true
-    }
+    },
+    platform: {
+        type: String,
+        required: true,
+        trim: true,
+        default: 'Other', // Để các dữ liệu cũ không bị lỗi khi bạn chưa kịp update
+        index: true
+    },
 }, { timestamps: true });
 
 // Tạo Model, Collection name sẽ là 'learning_resources'
