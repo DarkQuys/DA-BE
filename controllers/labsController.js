@@ -1,5 +1,6 @@
 // controllers/labController.js
 const Lab = require('../models/Labs'); // Thay đổi đường dẫn nếu cần
+
 /**
  * API 1: GET tất cả các Labs (với tùy chọn lọc theo platform và Difficulty)
  * Route: GET /api/labs?platform=Web%20Security&difficulty=2
@@ -7,117 +8,49 @@ const Lab = require('../models/Labs'); // Thay đổi đường dẫn nếu cầ
 
 const LabLibrary = require('../models/LabLibrary');
 
-// const createLabFromLibrary = async (req, res) => {
-//     try {
-//         const { url } = req.body; // Người dùng chỉ cần gửi URL
-
-//         // 1. Đối chiếu: Tìm trong thư viện mẫu xem URL này đã có chưa
-//         const libraryTemplate = await LabLibrary.findOne({ url: url });
-//        console.log("xx",libraryTemplate)
-//         if (!libraryTemplate) {
-//             var randomDocs = await LabLibrary.aggregate([
-//             { $sample: { size: 1 } } 
-//         ]);
-
-//         const newLab = new Lab({
-//             id: randomDocs.id, // Hoặc tự tạo ID mới như logic cũ của bạn
-//             title: randomDocs.title,
-//             platform: randomDocs.platform,
-//             category: randomDocs.category,
-//             difficulty: randomDocs.difficulty,
-//             url: randomDocs.url,
-//             description: randomDocs.description,
-//             description_detail: randomDocs.description_detail,
-//         });
-
-//         await newLab.save();
-
-//         res.status(201).json({
-//             message: 'Đã lấy dữ liệu từ thư viện và tạo Lab thành công.',
-//             data: newLab
-//         });
-        
-//         }
-
-//         // 2. Kiểm tra xem người dùng này đã thêm Lab này chưa (tránh trùng lặp bài tập)
-//         // const existingLab = await Lab.findOne({ url: url });
-//         // if (existingLab) {
-//         //     return res.status(400).json({ message: "Bạn đã thêm bài Lab này vào danh sách rồi." });
-//         // }
-
-//         // 3. Clone dữ liệu từ Thư viện sang bảng Lab thực tế
-//         const newLab = new Lab({
-//             id: libraryTemplate.id, // Hoặc tự tạo ID mới như logic cũ của bạn
-//             title: libraryTemplate.title,
-//             platform: libraryTemplate.platform,
-//             category: libraryTemplate.category,
-//             difficulty: libraryTemplate.difficulty,
-//             url: libraryTemplate.url,
-//             description: libraryTemplate.description,
-//             description_detail: libraryTemplate.description_detail,
-  
-//         });
-
-//         await newLab.save();
-
-//         res.status(201).json({
-//             message: 'Đã lấy dữ liệu từ thư viện và tạo Lab thành công.',
-//             data: newLab
-//         });
-
-//     } catch (error) {
-//         res.status(500).json({ message: 'Lỗi server', error: error.message });
-//     }
-// };
 const createLabFromLibrary = async (req, res) => {
     try {
-        const { url } = req.body; 
+        const { url } = req.body; // Người dùng chỉ cần gửi URL
 
-        // 1. Tìm trong thư viện mẫu
-        let libraryTemplate = await LabLibrary.findOne({ url: url });
+        // 1. Đối chiếu: Tìm trong thư viện mẫu xem URL này đã có chưa
+        const libraryTemplate = await LabLibrary.findOne({ url: url });
 
-        // 2. Nếu không tìm thấy theo URL, tiến hành lấy RANDOM
         if (!libraryTemplate) {
-            const randomDocs = await LabLibrary.aggregate([{ $sample: { size: 1 } }]);
-            
-            if (randomDocs.length === 0) {
-                return res.status(404).json({ message: "Thư viện mẫu đang trống." });
-            }
-            
-            libraryTemplate = randomDocs[0]; // Gán lại để dùng chung logic bên dưới
-            console.log("Đã chọn ngẫu nhiên bài Lab:", libraryTemplate.title);
+            return res.status(404).json({
+                message: "Chưa tìm thấy Lab mẫu với URL đã cung cấp."
+            });
         }
 
-        // 3. Kiểm tra trùng lặp (Optional - nên mở ra để tránh rác DB)
-        const isDuplicate = await Lab.findOne({ url: libraryTemplate.url });
-        if (isDuplicate) {
-            return res.status(400).json({ message: "Bài Lab này đã tồn tại trong danh sách của bạn." });
-        }
+        // 2. Kiểm tra xem người dùng này đã thêm Lab này chưa (tránh trùng lặp bài tập)
+        // const existingLab = await Lab.findOne({ url: url });
+        // if (existingLab) {
+        //     return res.status(400).json({ message: "Bạn đã thêm bài Lab này vào danh sách rồi." });
+        // }
 
-        // 4. Tạo Lab mới (Dùng chung 1 chỗ cho gọn)
+        // 3. Clone dữ liệu từ Thư viện sang bảng Lab thực tế
         const newLab = new Lab({
-            id: libraryTemplate.id,
+            id: libraryTemplate.id, // Hoặc tự tạo ID mới như logic cũ của bạn
             title: libraryTemplate.title,
             platform: libraryTemplate.platform,
             category: libraryTemplate.category,
+            skill_tags :libraryTemplate.skill_tags,
             difficulty: libraryTemplate.difficulty,
             url: libraryTemplate.url,
             description: libraryTemplate.description,
             description_detail: libraryTemplate.description_detail,
         });
-
         await newLab.save();
 
-        return res.status(201).json({
-            message: 'Tạo Lab thành công!',
+        res.status(201).json({
+            message: 'Đã lấy dữ liệu từ thư viện và tạo Lab thành công.',
             data: newLab
         });
 
     } catch (error) {
-        console.error("Lỗi Controller:", error);
-        return res.status(500).json({ message: 'Lỗi server', error: error.message });
+        res.status(500).json({ message: 'Lỗi server', error: error.message });
     }
 };
+
 const getAllLabs = async (req, res) => {
     try {
         const { platform, difficulty, search } = req.query;
