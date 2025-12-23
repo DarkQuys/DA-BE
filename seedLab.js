@@ -5,36 +5,92 @@ const LabLibrary = require('./models/LabLibrary');
 const Web_pentest = [
   {
     "id": 1,
-    "title": "Offensive Security Intro",
-    "platform": "TryHackMe",
-    "category": "Offensive Security",
+    "title": "Linux Fundamentals",
+    "platform": "HackTheBox",
+    "category": "Fundamentals",
     "skill_tags": [
-      "Offensive Security",
-      "Recon",
-      "Web Enumeration",
-      "Gobuster"
+      "Linux",
+      "CLI",
+      "File System",
+      "Permissions",
+      "Processes"
     ],
-    "difficulty": 2,
+    "difficulty": 1,
     "subject": "",
-    "url": "https://tryhackme.com/room/offensivesecurityintro",
-    "description": "Room TryHackMe: Offensive Security Intro.",
-    "description_detail": "Room này thuộc nhóm Offensive Security trên TryHackMe, mức độ Easy. Nội dung chính: Offensive Security, Recon, Web Enumeration, Gobuster. Kết quả mong đợi: nắm được kiến thức/kỹ năng cốt lõi và áp dụng cho các bài thực hành tiếp theo. Link: https://tryhackme.com/room/offensivesecurityintro"
+    "url": "https://academy.hackthebox.com/course/preview/linux-fundamentals",
+    "description": "Module HTB Academy: Linux Fundamentals (nền tảng Hack The Box).",
+    "description_detail": "Module 'Linux Fundamentals' thuộc nhóm Fundamentals trên HTB Academy (Hack The Box), mức Beginner/Fundamental. Nội dung chính: Linux, CLI, File System, Permissions, Processes. Kết quả mong đợi: nắm vững kiến thức nền tảng và thực hành theo hướng guided-learning để chuẩn bị cho các lab/box nâng cao. Link: https://academy.hackthebox.com/course/preview/linux-fundamentals"
   },
   {
     "id": 2,
-    "title": "Defensive Security Intro",
-    "platform": "TryHackMe",
-    "category": "Defensive Security",
+    "title": "Introduction to Networking",
+    "platform": "HackTheBox",
+    "category": "Networking",
     "skill_tags": [
-      "Defensive Security",
-      "SOC",
-      "Monitoring Basics"
+      "Networking",
+      "TCP/IP",
+      "OSI Model",
+      "IP/Subnet",
+      "Ports"
+    ],
+    "difficulty": 1,
+    "subject": "",
+    "url": "https://academy.hackthebox.com/course/preview/introduction-to-networking",
+    "description": "Module HTB Academy: Introduction to Networking (nền tảng Hack The Box).",
+    "description_detail": "Module 'Introduction to Networking' thuộc nhóm Networking trên HTB Academy (Hack The Box), mức Beginner/Fundamental. Nội dung chính: Networking, TCP/IP, OSI Model, IP/Subnet, Ports. Kết quả mong đợi: nắm vững kiến thức nền tảng và thực hành theo hướng guided-learning để chuẩn bị cho các lab/box nâng cao. Link: https://academy.hackthebox.com/course/preview/introduction-to-networking"
+  },
+  {
+    "id": 3,
+    "title": "Web Requests",
+    "platform": "HackTheBox",
+    "category": "Web Security",
+    "skill_tags": [
+      "HTTP",
+      "Requests",
+      "Headers",
+      "cURL",
+      "Web Basics"
+    ],
+    "difficulty": 1,
+    "subject": "",
+    "url": "https://academy.hackthebox.com/course/preview/web-requests",
+    "description": "Module HTB Academy: Web Requests (nền tảng Hack The Box).",
+    "description_detail": "Module 'Web Requests' thuộc nhóm Web Security trên HTB Academy (Hack The Box), mức Beginner/Fundamental. Nội dung chính: HTTP, Requests, Headers, cURL, Web Basics. Kết quả mong đợi: nắm vững kiến thức nền tảng và thực hành theo hướng guided-learning để chuẩn bị cho các lab/box nâng cao. Link: https://academy.hackthebox.com/course/preview/web-requests"
+  },
+  {
+    "id": 4,
+    "title": "Introduction to Web Applications",
+    "platform": "HackTheBox",
+    "category": "Web Security",
+    "skill_tags": [
+      "Web",
+      "Client-Server",
+      "Sessions",
+      "Cookies",
+      "Web Security Basics"
+    ],
+    "difficulty": 1,
+    "subject": "",
+    "url": "https://academy.hackthebox.com/course/preview/introduction-to-web-applications",
+    "description": "Module HTB Academy: Introduction to Web Applications (nền tảng Hack The Box).",
+    "description_detail": "Module 'Introduction to Web Applications' thuộc nhóm Web Security trên HTB Academy (Hack The Box), mức Beginner/Fundamental. Nội dung chính: Web, Client-Server, Sessions, Cookies, Web Security Basics. Kết quả mong đợi: nắm vững kiến thức nền tảng và thực hành theo hướng guided-learning để chuẩn bị cho các lab/box nâng cao. Link: https://academy.hackthebox.com/course/preview/introduction-to-web-applications"
+  },
+  {
+    "id": 5,
+    "title": "Network Enumeration with Nmap",
+    "platform": "HackTheBox",
+    "category": "Tooling",
+    "skill_tags": [
+      "Nmap",
+      "Port Scanning",
+      "Service Enumeration",
+      "Host Discovery"
     ],
     "difficulty": 2,
     "subject": "",
-    "url": "https://tryhackme.com/room/defensivesecurityintro",
-    "description": "Room TryHackMe: Defensive Security Intro.",
-    "description_detail": "Room này thuộc nhóm Defensive Security trên TryHackMe, mức độ Easy. Nội dung chính: Defensive Security, SOC, Monitoring Basics. Kết quả mong đợi: nắm được kiến thức/kỹ năng cốt lõi và áp dụng cho các bài thực hành tiếp theo. Link: https://tryhackme.com/room/defensivesecurityintro"
+    "url": "https://academy.hackthebox.com/course/preview/network-enumeration-with-nmap",
+    "description": "Module HTB Academy: Network Enumeration with Nmap (nền tảng Hack The Box).",
+    "description_detail": "Module 'Network Enumeration with Nmap' thuộc nhóm Tooling trên HTB Academy (Hack The Box), mức Easy. Nội dung chính: Nmap, Port Scanning, Service Enumeration, Host Discovery. Kết quả mong đợi: nắm vững kiến thức nền tảng và thực hành theo hướng guided-learning để chuẩn bị cho các lab/box nâng cao. Link: https://academy.hackthebox.com/course/preview/network-enumeration-with-nmap"
   }
 ]
 async function seed() {
