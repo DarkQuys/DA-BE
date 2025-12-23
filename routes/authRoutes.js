@@ -4,7 +4,7 @@ const { getAll } = require('../controllers/questionController');
 const { submit } = require('../controllers/submissionController');
 const { getRoadmap, getAllRoadmap, getRoadmapByLevel } = require('../controllers/roadmap');
 const { updateProgress, getProgresStudent, createProgress, getProgressStudent, getProgressStudent2 } = require('../controllers/progress');
-const { getAllLabs, createLab } = require('../controllers/labsController');
+const { getAllLabs, createLab, createLabFromLibrary } = require('../controllers/labsController');
 const { getAllResources, createResource } = require('../controllers/resorcesController');
 const { getTestMessageUrl } = require('nodemailer');
 const { getRandomQuestions, submitQuiz, getUserQuizHistory } = require('../controllers/CQuestionsController');
@@ -36,6 +36,7 @@ router.get('/progress/:studentId', getProgressStudent2);
 //labs
 router.get('/get-labs', getAllLabs);
 router.post('/post-lab', createLab);
+router.post('/post-url', createLabFromLibrary);
 
 //resource
 router.get('/get-resorce', getAllResources);
