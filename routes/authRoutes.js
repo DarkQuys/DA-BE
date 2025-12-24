@@ -8,6 +8,7 @@ const { getAllLabs, createLab, createLabFromLibrary } = require('../controllers/
 const { getAllResources, createResource } = require('../controllers/resorcesController');
 const { getTestMessageUrl } = require('nodemailer');
 const { getRandomQuestions, submitQuiz, getUserQuizHistory } = require('../controllers/CQuestionsController');
+const { createLabWithAI } = require('../controllers/aiLabController');
 const router = express.Router();
 
 // Định nghĩa routes
@@ -37,6 +38,7 @@ router.get('/progress/:studentId', getProgressStudent2);
 router.get('/get-labs', getAllLabs);
 router.post('/post-lab', createLab);
 router.post('/post-url', createLabFromLibrary);
+router.post('/post-urlai', createLabWithAI);
 
 //resource
 router.get('/get-resorce', getAllResources);

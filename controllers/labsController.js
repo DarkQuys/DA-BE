@@ -38,6 +38,7 @@ const createLabFromLibrary = async (req, res) => {
             url: libraryTemplate.url,
             description: libraryTemplate.description,
             description_detail: libraryTemplate.description_detail,
+  
         });
         await newLab.save();
 
