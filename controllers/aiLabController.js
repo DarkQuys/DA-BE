@@ -1,12 +1,13 @@
 // services/aiLabService.js
 const { GoogleGenerativeAI } = require("@google/generative-ai");
-
-const genAI = new GoogleGenerativeAI("AIzaSyDK9R0FTaKEKRvqv8R2HFW_-cdjU5oVstU");
+require('dotenv').config();
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 // controllers/labController.js
 const LabLibrary = require('../models/LabLibrary');
 const Lab = require('../models/Labs');
 const createLabWithAI = async (req, res) => {
     try {
+        console.log("Yêu cầu từ người dùng:", process.env.GEMINI_API_KEY);
         const { url } = req.body;
         const existing = await Lab.findOne({ url });
         if (existing) {
@@ -16,17 +17,17 @@ const createLabWithAI = async (req, res) => {
 
         const aiData = await generateLabData(url);
 
-        const newLibraryLab = new Lab({
+        const newLab = new Lab({
             ...aiData,
             id: Date.now(), 
             url: url
         });
 
-        await newLibraryLab.save();
+        await newLab.save();
 
         res.status(201).json({
             message: "AI đã tự động thêm Lab vào hệ thống!",
-            data: newLibraryLab
+            data: newLab
         });
 
     } catch (error) {
