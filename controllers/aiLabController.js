@@ -7,7 +7,7 @@ const LabLibrary = require('../models/LabLibrary');
 const Lab = require('../models/Labs');
 const createLabWithAI = async (req, res) => {
     try {
-        console.log("Yêu cầu từ người dùng:", process.env.GEMINI_API_KEY);
+
         const { url } = req.body;
         const existing = await Lab.findOne({ url });
         if (existing) {
@@ -47,7 +47,7 @@ const generateLabData = async (inputUrl) => {
         Sau đó tạo ra một đối tượng JSON chuẩn theo cấu trúc sau:
         {
             "title": "Tên bài lab",
-            "platform": "Tên nền tảng (ví dụ TryHackMe, HackTheBox)",
+            "platform": "NewLab",
             "category": "Lĩnh vực (ví dụ: Web, Network, Forensics)",
             "skill_tags": ["tag1", "tag2"],
             "difficulty": (số từ 1 đến 5),
